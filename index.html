@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registrar's Office Class Search</title>
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <h2>Class Search</h2>
+    <hr>
+    <form action="/index" method="get">
+        <table>
+            <tr align="right">
+                <td>Dept:</td>
+                <td>
+                    <input type="text" name="dept" value="{{ display[0] }}">
+                </td>
+            </tr>
+            <tr align="right">
+                <td>Number:</td>
+                <td>
+                    <input type="text" name="num" value="{{ display[1] }}">
+                </td>
+            </tr>
+            <tr align="right">
+                <td>Area:</td>
+                <td>
+                    <input type="text" name="area" value="{{ display[2] }}">
+                </td>
+            </tr>
+            <tr align="right">
+                <td>Title:</td>
+                <td>
+                    <input type="text" name="title" value="{{ display[3] }}">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Submit">
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+    <hr>
+    <table>
+        <tr align="left">
+            <th>ClassId</td>
+            <th>Dept</td>
+            <th>Num</td>
+            <th>Area</td>
+            <th>Title</td>
+        </tr>
+        {% for row in table: %}
+        <tr>
+            <td><a href="/details?classid={{ row[0] }}">{{ row[0] }}</a></td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% include 'footer.html' %}
+</body>
+
+</html>

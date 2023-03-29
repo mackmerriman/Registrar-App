@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registrar's Office Class Details</title>
+</head>
+
+<body>
+    {% include 'header.html' %}
+
+    <hr>
+    <h2>Class Details (class id {{ classnum[0][0] }})</h2>
+    {% for i in range(0, 6, 1): %}
+    <strong>{{ titles[i] }}</strong>
+    {{ specs[0][i] }}<br>
+    {% endfor %}
+    <hr>
+
+    <h2>Course Details (course id {{ coursenum[0][0] }})</h2>
+
+    {% for row in cross: %}
+    <strong>Dept and Number:</strong>
+    {{ row[0] + " " + row[1] }}<br>
+    {% endfor %}
+
+    {% for i in range(0, 4, 1): %}
+    <strong>{{ titles2[i] }}</strong>
+    {{ info[0][i] }}<br>
+    {% endfor %}
+
+    {% for row in profs: %}
+    <strong>Professor:</strong>
+    {{ row[0] }}<br>
+    {% endfor %}
+
+    <hr>
+    Click here to do <a href="/index?dpage=true">another class search</a>
+
+    {% include 'footer.html' %}
+</body>
+
+</html>
