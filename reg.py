@@ -1,4 +1,4 @@
-# !/Users/mackmerriman/cos333/A3-cos333/reg.py
+# !/Users/mackmerriman/cos333/A4-cos333/reg.py
 
 # Author: Mack Merriman
 #-----------------------------------------------------------------------
@@ -14,15 +14,18 @@ app = flask.Flask(__name__, template_folder=".")
 @app.route("/index", methods=["GET"])
 def index():
 
+    html_code = flask.render_template("index.html")
+    response = flask.make_response(html_code)
+    return response
+
+@app.route("/classresults", methods=["GET"])
+def classresults():
+
     prev_search = ["","","",""]
     prev_search[0] = flask.request.args.get("dept")
     prev_search[1] = flask.request.args.get("num")
     prev_search[2] = flask.request.args.get("area")
     prev_search[3] = flask.request.args.get("title")
-
-    if ((flask.request.args.get("dpage"))
-        and (flask.request.cookies.get("search"))):
-        prev_search = flask.request.cookies.get("search").split(",")
 
     for i in range(0, len(prev_search), 1):
         if prev_search[i] is None:
@@ -38,13 +41,9 @@ def index():
         response = flask.make_response(html_code)
         return response
 
-    html_code = flask.render_template("index.html",
-                                      table=table,
-                                      display=display,
-                                      search=prev_search)
+    html_code = flask.render_template("classes.html",
+                                      table=table)
     response = flask.make_response(html_code)
-    if prev_search:
-        response.set_cookie("search", ",".join(display))
     return response
 
 @app.route("/details", methods=["GET"])
@@ -97,14 +96,5 @@ def details():
                                       profs=profs,
                                       titles=titles,
                                       titles2=titles2)
-    response = flask.make_response(html_code)
-    return response
-
-@app.route("/classid_error", methods=["GET"])
-def classid_error():
-
-
-    html_code = flask.render_template("classid_error.html",
-                                      )
     response = flask.make_response(html_code)
     return response
