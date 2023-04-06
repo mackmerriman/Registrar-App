@@ -31,8 +31,6 @@ def classresults():
         if prev_search[i] is None:
             prev_search[i] = ""
 
-    display = prev_search.copy()
-
     statement = query_prep(prev_search)
     table, fail = db_access(statement)
 
