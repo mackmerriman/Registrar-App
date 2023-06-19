@@ -1,8 +1,3 @@
-# !/Users/mackmerriman/cos333/A4-cos333/reg.py
-
-# Author: Mack Merriman
-#-----------------------------------------------------------------------
-
 import flask
 from queryprep import query_prep
 from dbaccess import db_access
@@ -10,18 +5,20 @@ from detailsdbdisplay import details_db_display
 
 app = flask.Flask(__name__, template_folder=".")
 
+
 @app.route("/", methods=["GET"])
 @app.route("/index", methods=["GET"])
 def index():
 
-    html_code = flask.render_template("index.html")
+    html_code = flask.render_template("templates/index.html")
     response = flask.make_response(html_code)
     return response
+
 
 @app.route("/classresults", methods=["GET"])
 def classresults():
 
-    prev_search = ["","","",""]
+    prev_search = ["", "", "", ""]
     prev_search[0] = flask.request.args.get("dept")
     prev_search[1] = flask.request.args.get("num")
     prev_search[2] = flask.request.args.get("area")
@@ -39,10 +36,11 @@ def classresults():
         response = flask.make_response(html_code)
         return response
 
-    html_code = flask.render_template("classes.html",
+    html_code = flask.render_template("templates/classes.html",
                                       table=table)
     response = flask.make_response(html_code)
     return response
+
 
 @app.route("/details", methods=["GET"])
 def details():
@@ -50,30 +48,30 @@ def details():
     titles = ["Course Id:", "Days:", "Start time:",
               "End time:", "Building:", "Room:"]
     titles2 = ["Area:", "Title:", "Description:",
-              "Prerequisites:"]
+               "Prerequisites:"]
 
     classid = flask.request.args.get('classid')
 
     if not classid:
-        html_code = flask.render_template("missing_error.html")
+        html_code = flask.render_template("templates/missing_error.html")
         response = flask.make_response(html_code)
         return response
 
     if not classid.isdigit():
-        html_code = flask.render_template("classid_type_error.html")
+        html_code = flask.render_template("templates/classid_type_error.html")
         response = flask.make_response(html_code)
         return response
 
     tables, fail = details_db_display(classid)
 
     if fail == 2:
-        html_code = flask.render_template("classid_error.html",
-                                      classid=classid)
+        html_code = flask.render_template("templates/classid_error.html",
+                                          classid=classid)
         response = flask.make_response(html_code)
         return response
 
     if fail == 1:
-        html_code = flask.render_template("error.html")
+        html_code = flask.render_template("templates/error.html")
         response = flask.make_response(html_code)
         return response
 
@@ -84,8 +82,7 @@ def details():
     info = tables[4]
     profs = tables[5]
 
-
-    html_code = flask.render_template("details.html",
+    html_code = flask.render_template("templates/details.html",
                                       classnum=classnum,
                                       specs=specs,
                                       coursenum=coursenum,

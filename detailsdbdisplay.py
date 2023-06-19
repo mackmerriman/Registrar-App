@@ -1,8 +1,3 @@
-# !/Users/mackmerriman/cos333/A3-cos333/detailsdbdisplay.py
-
-# Author: Mack Merriman
-#-----------------------------------------------------------------------
-
 import sys
 import sqlite3
 import contextlib

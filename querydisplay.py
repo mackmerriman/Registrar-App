@@ -1,8 +1,3 @@
-# !/Users/mackmerriman/cos333/A3-cos333/querydisplay.py
-
-# Author: Mack Merriman
-#-----------------------------------------------------------------------
-
 def query_display(table):
 
     # print out the top of the table in the desired fashion.

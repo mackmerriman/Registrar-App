@@ -1,12 +1,6 @@
-
-# !/Users/mackmerriman/cos333/A3-cos333/runserver.py
-
-# Author: Mack Merriman
-#-----------------------------------------------------------------------
-
 import sys
 import argparse
-import reg
+import registrarapp
 
 def main():
 
@@ -23,7 +17,7 @@ def main():
     port = args.port
 
     try:
-        reg.app.run(host='0.0.0.0', port=port, debug=True)
+        registrarapp.app.run(host='0.0.0.0', port=port, debug=True)
     except Exception as ex:
         print(ex, file=sys.stderr)
         sys.exit(1)

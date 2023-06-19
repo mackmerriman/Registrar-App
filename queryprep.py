@@ -1,8 +1,3 @@
-# !/Users/mackmerriman/cos333/A3-cos333/queryprep.py
-
-# Author: Mack Merriman
-#-----------------------------------------------------------------------
-
 def query_prep(filters):
 
     parameters = []

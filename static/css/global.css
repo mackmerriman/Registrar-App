@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:400,700&display=swap");
+
+.header,
+.footer {
+  background-color: #ff8f00;
+  color: white;
+  font-family: "Work Sans", sans-serif;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+}
+
+.header-logo {
+  width: 110px;
+  height: 60px;
+  margin-top: 10px;
+}
+
+.search {
+  background-color: #000000;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
