@@ -1,6 +1,7 @@
 import sys
 import argparse
-import registrarapp
+import index
+
 
 def main():
 
@@ -17,10 +18,11 @@ def main():
     port = args.port
 
     try:
-        registrarapp.app.run(host='0.0.0.0', port=port, debug=True)
+        index.app.run(host='0.0.0.0', port=port, debug=True)
     except Exception as ex:
         print(ex, file=sys.stderr)
         sys.exit(1)
+
 
 if __name__ == '__main__':
     main()
