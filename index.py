@@ -10,7 +10,7 @@ app = flask.Flask(__name__, template_folder=".")
 @app.route("/index", methods=["GET"])
 def index():
 
-    html_code = flask.render_template("templates/index.html")
+    html_code = flask.render_template("index.html")
     response = flask.make_response(html_code)
     return response
 
@@ -36,7 +36,7 @@ def classresults():
         response = flask.make_response(html_code)
         return response
 
-    html_code = flask.render_template("templates/classes.html",
+    html_code = flask.render_template("classes.html",
                                       table=table)
     response = flask.make_response(html_code)
     return response
@@ -53,25 +53,25 @@ def details():
     classid = flask.request.args.get('classid')
 
     if not classid:
-        html_code = flask.render_template("templates/missing_error.html")
+        html_code = flask.render_template("missing_error.html")
         response = flask.make_response(html_code)
         return response
 
     if not classid.isdigit():
-        html_code = flask.render_template("templates/classid_type_error.html")
+        html_code = flask.render_template("classid_type_error.html")
         response = flask.make_response(html_code)
         return response
 
     tables, fail = details_db_display(classid)
 
     if fail == 2:
-        html_code = flask.render_template("templates/classid_error.html",
+        html_code = flask.render_template("classid_error.html",
                                           classid=classid)
         response = flask.make_response(html_code)
         return response
 
     if fail == 1:
-        html_code = flask.render_template("templates/error.html")
+        html_code = flask.render_template("error.html")
         response = flask.make_response(html_code)
         return response
 
@@ -82,7 +82,7 @@ def details():
     info = tables[4]
     profs = tables[5]
 
-    html_code = flask.render_template("templates/details.html",
+    html_code = flask.render_template("details.html",
                                       classnum=classnum,
                                       specs=specs,
                                       coursenum=coursenum,
