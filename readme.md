@@ -1,6 +1,6 @@
 # Course Registrar
 
-Visit the Course Registrar at [registrar-application.onrender.com](https://registrar-application.onrender.com)
+Visit the Course Registrar at [registrar-application.uk.r.appspot.com](https://registrar-application.uk.r.appspot.com)
 
 ## About The App
 
